@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
+import { observer } from 'mobx-react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import SessionStore from './stores/session_store';
+import Login from './Login';
+import Home from './Home';
+import Toast from './Toast';
 import './App.css';
 
-function App() {
+const App: React.FC = observer(() => {
+  const store = new SessionStore();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Toast store={store} />
+      <Router>
+        <Switch>
+          <Route path='/login'>
+            <Login store={store} />
+          </Route>
+          <Route path='/home'>
+            <Home store={store} />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
-}
+});
 
 export default App;

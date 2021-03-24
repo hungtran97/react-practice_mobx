@@ -1,0 +1,14 @@
+.home {
+  color: #282c34;
+  font-size: 16px;
+  text-align: center;
+}
+
+img {
+  width: 100px;
+  margin-bottom: 10px;
+}
+.avatar-select {
+  width: 150px;
+  font-size: 10px;
+}
